@@ -35,7 +35,7 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
             data={
                 email:$scope.email,
                 password:$scope.password,
-                username:$scope.username
+                user:$scope.username
             }
             AuthService.signUp(data,function(res){
               if(res.status==200){
