@@ -3,13 +3,13 @@
 const mongoose=require('mongoose')
 const User=require('./../models/user')
 const token=require('./../services/token')
-
+const sha256=require('sha256')
 
 function signUp(req,res){
     const user=new User({
         email:req.body.email,
         user:req.body.user,
-        password:req.body.password
+        password:sha256(req.body.password)
     })
 
     user.save((err)=>{
@@ -19,10 +19,9 @@ function signUp(req,res){
 }
 
 function signIn(req,res){
-    User.findOne({email:req.body.email,password:req.body.password},(err,user)=>{
+    User.findOneAndUpdate({email:req.body.email,password:sha256(req.body.password)},{$set:{lastLogin:Date.now()}},(err,user)=>{
         if(err) return res.status(500).send({message: err})
         if(!user) return res.status(401).send({message: 'use or password incorrect'})
-        console.log(user)
         req.user=user
         res.status(200).send({
             message:'authenticated',

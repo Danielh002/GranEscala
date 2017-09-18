@@ -22,7 +22,6 @@ function registerUser(req,res){
     
 }
 function emailExist(email,callback){
-    console.log(email)
     User.find({email:email},function(err,user){
         if(err) throw err
         else if(user) return false
