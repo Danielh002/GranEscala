@@ -1,4 +1,5 @@
 <div class="jumbotron text-center">
   <h1>Pagina Principal</h1> 
   <p>{{ message }}</p>
+  <button ng-if="existToken()" ng-click="logout()">Cerrar Sesion</button>
 </div>

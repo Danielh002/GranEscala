@@ -13,7 +13,7 @@ function signUp(req,res){
     })
 
     user.save((err)=>{
-        if(err) res.status(500).send({message:'error to create user'})
+        if(err) return res.status(500).send({message:'error to create user'})
         return res.status(200).send({token:token.createToken(user)})
     })
 }
