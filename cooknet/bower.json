@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "angular": "angularjs#^1.6.6",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "ngstorage": "^0.3.11"
   }
 }
