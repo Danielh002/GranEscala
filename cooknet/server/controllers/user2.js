@@ -11,7 +11,6 @@ function registerUser(req,res){
     let user=new User()
     user.email=req.body.email
     user.save((err,userStored)=>{
-        //console.log(err.toString())
         if(err) {            
             if(err.errors.email) res.status(500).send({message:"email already exist"})
             else res.status(500).res.json({message:"Error at momento to save user"})
@@ -23,7 +22,6 @@ function registerUser(req,res){
     
 }
 function emailExist(email,callback){
-    console.log(email)
     User.find({email:email},function(err,user){
         if(err) throw err
         else if(user) return false
