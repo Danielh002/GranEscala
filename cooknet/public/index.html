@@ -1,11 +1,12 @@
 <!-- index.html -->
 <html ng-app='myApp'>
   <head>
+    <title>Cooknet</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
   </head>
   <body ng-controller='mainController'>
     <header>
-      <h1>Angular Routing</h1>
+      <h1>Cooknet</h1>
         <nav> 
           <ul> 
             <li><a href="#!/">Inicio</a></li>
@@ -14,6 +15,7 @@
             
             <li ng-if="! existToken()"><a href="#!login">Login</a></li>
             <li ng-if="! existToken()"><a href="#!signUp">Registrarse</a></li>
+            <li ng-if="existToken()"><a href="" ng-click="logout()">Cerra Sesion</a></li>
           </ul> 
         </nav>
       </header>

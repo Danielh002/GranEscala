@@ -29,13 +29,31 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
     };
 
     $scope.signUp = function() {
-        console.log("lel");
-      data={
-          email:$scope.email,
-          password:$scope.password,
-          username:$scope.username
-      }
-      console.log(data);
+        $scope.message=null;
+        if($scope.password==$scope.passwordConfirm){
+            
+            data={
+                email:$scope.email,
+                password:$scope.password,
+                username:$scope.username
+            }
+            AuthService.signUp(data,function(res){
+              if(res.status==200){
+                  $localStorage.token=res.data.token;
+                  $token=$localStorage.token;
+                  window.location="/";
+              }
+            },function(res){
+              if(res.data && res.data.message=="user dont exist"){
+                  $scope.message="usuario o contraseña incorrecta";
+              }
+            });
+            console.log(data);
+        }
+        else{
+            $scope.message="las contraseña no son iguales"
+        }
+
     };
 
     $scope.me = function() {
