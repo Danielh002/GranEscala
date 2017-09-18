@@ -13,15 +13,16 @@
             <li><a href="#!contacto">Contacto</a></li>
             
             <li ng-if="! existToken()"><a href="#!login">Login</a></li>
+            <li ng-if="! existToken()"><a href="#!signUp">Registrarse</a></li>
           </ul> 
         </nav>
       </header>
-      <div id="main">
+      <div id="main" class="container">
         <!-- Aquí inyectamos las vistas -->
         <div ng-view></div> 
       </div>
       <script src="js/libraries/angular.min.js"></script> 
-      <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.3/angular-route.js"></script>
+      <script src="js/libraries/angular-route.min.js"></script>
       <script src="js/libraries/ngStorage.min.js"></script>
       <script src="js/main.js"></script>
       <script src="js/controllers/auth.js"></script>
