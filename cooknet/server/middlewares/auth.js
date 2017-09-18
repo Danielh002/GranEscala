@@ -9,7 +9,6 @@ function isAuth(req,res,next){
     }
 
     const token=req.headers.authorization.split(" ")[1]
-    //console.log(token)
     tokenService.decodeToken(token)
         .then(response=>{
             req.user=response

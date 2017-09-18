@@ -19,7 +19,6 @@ app.get('/',(req,res)=>{
 
 app.use('/api',api)
 app.use((req,res)=>{
-    console.log(__dirname)
     res.sendFile('public/index.html',{root:'../'})
 })
 

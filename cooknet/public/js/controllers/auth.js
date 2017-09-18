@@ -14,17 +14,13 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
                 $token=$localStorage.token;
                 window.location="/";
             }
-            else if(res.status==404){
+            else if(res.status==401){
                 console.log("usuario o contraseña incorrecta");
                 $scope.message="usuario o contraseña incorrecta";
             }
 
         },function(res){
-
-            if(res.data && res.data.message=="user dont exist"){
-                console.log("usuario o contraseña incorrecta");
-                $scope.message="usuario o contraseña incorrecta";
-            }
+            $scope.message="error en la conexion";
         });
     };
 
@@ -66,12 +62,43 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
     };
 
     $scope.existMessage=function(){
-        console.log("vmd")
         if($scope.message){
             return true;
         }
         else{
             return false;
+        }
+    }
+    $scope.verifyUser=function(){
+        $scope.message=null;
+        data={user:$scope.username};
+        AuthService.userExist(data,function(res){
+            if(res.status==200){
+                if(res.data.userExist){
+                    $scope.okUser=false;
+                    $scope.message="el nombre de usuario ya existe intenete otro"
+                }
+                else{
+                    $scope.okUser=true;
+                }
+            }
+        })
+    }
+    $scope.verifyEmail=function(){
+        $scope.message=null;
+        if($scope.email){
+            data={email:$scope.email};
+            AuthService.emailExist(data,function(res){
+                if(res.status==200){
+                    if(res.data.emailExist){
+                        $scope.okEmail=false;
+                        $scope.message="el correo ya se encuentra registrado intente otro"
+                    }
+                    else{
+                        $scope.okEmail=true;
+                    }
+                }
+            })
         }
     }
     // $scope.token = $localStorage.token;
