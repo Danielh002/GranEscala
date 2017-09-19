@@ -1,0 +1,1 @@
+web: cd cooknet/server && node app.js
