@@ -2,16 +2,18 @@
   "name": "cooknet",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "cooknet/server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd cooknet/server && node app.js"
+    "start": "gulp copy && cd cooknet/server && node app.js",
+    "postinstall": "bower cache clean && bower install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.0",
+    "bower": "^1.8.2",
     "express": "^4.15.4",
     "gulp": "^3.9.1",
     "jwt-simple": "^0.5.1",
