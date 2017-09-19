@@ -2,3 +2,5 @@
 /cooknet/bower_components
 /cooknet/public/css/libraries
 /cooknet/public/js/libraries
+/node_modules
+/bower_components
