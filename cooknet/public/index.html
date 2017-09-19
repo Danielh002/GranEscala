@@ -1,27 +1,42 @@
 <!-- index.html -->
 <html ng-app='myApp'>
   <head>
+    <link href="css/style.css" rel="stylesheet">
     <title>Cooknet</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
   </head>
   <body ng-controller='mainController'>
     <header>
-      <h1>Cooknet</h1>
-        <nav> 
-          <ul> 
-            <li><a href="#!/">Inicio</a></li>
-            <li><a href="#!acerca">Acerca de</a></li>
-            <li><a href="#!contacto">Contacto</a></li>
-            
-            <li ng-if="! existToken()"><a href="#!login">Login</a></li>
-            <li ng-if="! existToken()"><a href="#!signUp">Registrarse</a></li>
-            <li ng-if="existToken()"><a href="" ng-click="logout()">Cerra Sesion</a></li>
-          </ul> 
+      <!--h1>Cooknet</h1-->
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="navbar-header">
+            <div class="h"><a class="titulo-nav" href="#" style="text-decoration: none; color: white;">Cooknet</a></div>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-mio">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navegacion-mio">
+            <ul class="nav navbar-nav pull-right"> 
+              <li class="active"><a href="#!/">Inicio</a></li>
+              <li><a href="#!acerca">Acerca de</a></li>
+              <li><a href="#!contacto">Contacto</a></li>
+
+              <li ng-if="! existToken()"><a href="#!login">Login</a></li>
+              <li ng-if="! existToken()"><a href="#!signUp">Registrarse</a></li>
+              <li ng-if="existToken()"><a href="" ng-click="logout()">Cerra Sesion</a></li>
+            </ul> 
+          </div>
         </nav>
       </header>
       <div id="main" class="container">
         <!-- Aquí inyectamos las vistas -->
         <div ng-view></div> 
+      </div>
+      <div class="footer">
+        <hr>
+        <p>&emsp;Cooknet &copy; 2017 PontiDev</p>
       </div>
       <script src="js/libraries/angular.min.js"></script> 
       <script src="js/libraries/angular-route.min.js"></script>
