@@ -20,7 +20,12 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
             }
 
         },function(res){
-            $scope.message="error en la conexion";
+            if(res.status==401){
+                $scope.message="usuario o contraseña incorrecta";
+            }
+            else{
+                $scope.message="error en la conexion";
+            }
         });
     };
 
