@@ -1,9 +1,16 @@
 <!-- index.html -->
 <html ng-app='myApp'>
   <head>
-    <link href="css/style.css" rel="stylesheet">
     <title>Cooknet</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link href="css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
   </head>
   <body ng-controller='mainController'>
     <header>
@@ -34,10 +41,6 @@
         <!-- Aquí inyectamos las vistas -->
         <div ng-view></div> 
       </div>
-      <div class="footer">
-        <hr>
-        <p>&emsp;Cooknet &copy; 2017 PontiDev</p>
-      </div>
       <script src="js/libraries/angular.min.js"></script> 
       <script src="js/libraries/angular-route.min.js"></script>
       <script src="js/libraries/ngStorage.min.js"></script>
@@ -45,4 +48,4 @@
       <script src="js/controllers/auth.js"></script>
       <script src="js/services/auth.js"></script>
     </body>
-    </html>
+</html>

@@ -12,7 +12,7 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
             if(res.status==200){
                 $localStorage.token=res.data.token;
                 $token=$localStorage.token;
-                window.location="/";
+                window.location="#!dashboard";
             }
             else if(res.status==401){
                 console.log("usuario o contraseña incorrecta");
@@ -59,6 +59,7 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
     $scope.logout = function() {
         $scope.token=null;
         delete $localStorage.token;
+        window.location="/";
     };
 
     $scope.existMessage=function(){

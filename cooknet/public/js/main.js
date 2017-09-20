@@ -25,6 +25,10 @@ app.config(function($routeProvider) {
 			templateUrl:'pages/signUp.html',
 			controller:'AuthController'
 		})
+		.when('/dashboard',{
+			templateUrl:'pages/dashboard.html',
+			controller: 'AuthController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -42,6 +46,7 @@ app.controller('mainController', ['$scope','$localStorage',function($scope,$loca
 	$scope.logout = function() {
         $scope.token=null;
         delete $localStorage.token;
+        window.location="/";
     };
 
 }]);
