@@ -65,10 +65,30 @@ function emailExist(req,res){
     })
 }
 
+function getUser(req,res){
+    User.findOne({user:req.params.user})
+    .then(user=>{
+        if(user){
+            res.send(user)
+        }
+        else{
+            res.status(404).send({message:"user dont exist"})
+        }
+    })
+    .catch(err=>{
+        res.status(500).send({message:"error to find user"})
+    })
+}
+
+function updateUser(req,res){
+    res.send()
+}
 
 module.exports={
     signUp,
     signIn,
     userExist,
-    emailExist
+    emailExist,
+    getUser,
+    updateUser
 }
