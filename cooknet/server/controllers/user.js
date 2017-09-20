@@ -19,15 +19,28 @@ function signUp(req,res){
 }
 
 function signIn(req,res){
-    User.findOneAndUpdate({email:req.body.email,password:sha256(req.body.password)},{$set:{lastLogin:Date.now()}},(err,user)=>{
-        if(err) return res.status(500).send({message: err})
-        if(!user) return res.status(401).send({message: 'use or password incorrect'})
-        req.user=user
-        res.status(200).send({
-            message:'authenticated',
-            token:token.createToken(user)
+    User.findOne({email:req.body.email,password:sha256(req.body.password)})
+        .then(user=>{
+            if(user){
+                User.findOneAndUpdate({email:req.body.email},{$set:{lastLogin:Date.now()}},(err,user)=>{
+                    if(err) return res.status(500).send({message: err})
+                    if(!user) return res.status(401).send({message: 'user or password incorrect'})
+                    req.user=user
+                    res.status(200).send({
+                        message:'authenticated',
+                        token:token.createToken(user)
+                    })
+                })
+            }
+            else{
+                if(!user) return res.status(401).send({message: 'user or password incorrect'})
+            }
         })
-    })
+        .catch(err=>{
+            if(err){
+                res.send(500).send({message:"error to find user"})
+            }
+        })
 }
 
 function userExist(req,res){
