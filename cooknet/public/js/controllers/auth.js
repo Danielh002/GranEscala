@@ -12,6 +12,7 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
             if(res.status==200){
                 $localStorage.token=res.data.token;
                 $token=$localStorage.token;
+                $localStorage.user="lenis96"; //ojo quemado
                 window.location="#!dashboard";
             }
             else if(res.status==401){

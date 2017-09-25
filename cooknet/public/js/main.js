@@ -29,6 +29,10 @@ app.config(function($routeProvider) {
 			templateUrl:'pages/dashboard.html',
 			controller: 'AuthController'
 		})
+		.when('/dashboard/misRecetas',{
+			templateUrl:'pages/misRecetas.html',
+			controller: 'RecipesController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
