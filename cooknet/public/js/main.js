@@ -33,6 +33,10 @@ app.config(function($routeProvider) {
 			templateUrl:'pages/misRecetas.html',
 			controller: 'RecipesController'
 		})
+		.when('/dashboard/crearReceta',{
+			templateUrl:'pages/createRecipe.html',
+			controller:'RecipesController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

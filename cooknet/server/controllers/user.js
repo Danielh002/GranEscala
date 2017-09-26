@@ -28,7 +28,8 @@ function signIn(req,res){
                     req.user=user
                     res.status(200).send({
                         message:'authenticated',
-                        token:token.createToken(user)
+                        token:token.createToken(user),
+                        user:user.user
                     })
                 })
             }
