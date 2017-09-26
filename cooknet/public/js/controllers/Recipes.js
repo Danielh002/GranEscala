@@ -24,4 +24,17 @@ app.controller('RecipesController', [ '$rootScope','$scope','$location','$localS
         })
     }
     $scope.setRecipes();
+
+    $scope.createRecipe=function(){
+        data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation}
+        console.log(data);
+        RecipesService.createRecipe(data,function(res){
+            if(res.status==200){
+
+            }
+            window.location="#!dashboard/misRecetas";
+        },function(err){
+
+        })
+    }
     }]);
