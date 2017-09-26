@@ -31,11 +31,19 @@ app.config(function($routeProvider) {
 		})
 		.when('/dashboard/misRecetas',{
 			templateUrl:'pages/misRecetas.html',
-			controller: 'RecipesController'
+			controller: 'RecipesViewRecipesController'
 		})
 		.when('/dashboard/crearReceta',{
 			templateUrl:'pages/createRecipe.html',
-			controller:'RecipesController'
+			controller:'RecipesCreateController'
+		})
+		.when('/dashboard/EditarReceta/:id',{
+			templateUrl:'pages/editRecipe.html',
+			controller:'RecipesEditController'
+		})
+		.when('/dashboard/receta/:id',{
+			templateUrl:'pages/recipeView.html',
+			controller:'RecipesViewController'
 		})
 		.otherwise({
 			redirectTo: '/'
@@ -56,7 +64,9 @@ app.controller('mainController', ['$scope','$localStorage',function($scope,$loca
         delete $localStorage.token;
         window.location="/";
     };
-
+	if($scope.existToken()){
+		window.location="#!dashboard";
+	}
 }]);
 
 app.controller('aboutController', function($scope) {

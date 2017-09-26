@@ -14,7 +14,7 @@
         <div class="list-group">
             <div class="list-group-item row" ng-repeat="recipe in recipes">
                 <div class="justify-content-between col-md-9">
-                  <h2>{{recipe.title}}</h2>
+                  <a href="#!dashboard/receta/{{recipe._id}}"><h2>{{recipe.title}}</h2></a>
                   <small>{{recipe.user}}</small>
                   <p>{{recipe.description}}</p>
                 </div>
