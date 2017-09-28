@@ -61,7 +61,8 @@ app.controller('mainController', ['$scope','$localStorage',function($scope,$loca
 	}
 	$scope.logout = function() {
         $scope.token=null;
-        delete $localStorage.token;
+		delete $localStorage.token;
+		delete $localStorage.user;
         window.location="/";
     };
 	if($scope.existToken()){
