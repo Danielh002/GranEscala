@@ -1,0 +1,28 @@
+<div>
+    <h1>Creacion Receta</h1>
+    <form>
+        <div class="form-group">
+            <label for="title">Titulo de la receta</label>
+            <input type="text" class="form-control" id="title" placeholder="" ng-model="title">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Descripcion</label>
+            <textarea style="resize:none" class="form-control" id="description" rows="3" ng-model="description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="ingredients">Ingredientes</label>
+            <textarea style="resize:none" class="form-control" id="ingredients" rows="7" ng-model="ingredients"></textarea>
+        </div>
+
+        <div class="form-group">
+                <label for="preparation">Prepación</label>
+                <textarea style="resize:none" class="form-control" id="preparation" rows="7" ng-model="preparation"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn" ng-click="toMyRecipes()">Cancelar</button>
+            <button type="button" class="btn btn-success" ng-click="createRecipe()">Crear</button>
+        </div>
+    </form>
+</div>

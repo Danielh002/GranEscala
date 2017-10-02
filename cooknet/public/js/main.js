@@ -29,6 +29,22 @@ app.config(function($routeProvider) {
 			templateUrl:'pages/dashboard.html',
 			controller: 'AuthController'
 		})
+		.when('/dashboard/misRecetas',{
+			templateUrl:'pages/misRecetas.html',
+			controller: 'RecipesViewRecipesController'
+		})
+		.when('/dashboard/crearReceta',{
+			templateUrl:'pages/createRecipe.html',
+			controller:'RecipesCreateController'
+		})
+		.when('/dashboard/EditarReceta/:id',{
+			templateUrl:'pages/editRecipe.html',
+			controller:'RecipesEditController'
+		})
+		.when('/dashboard/receta/:id',{
+			templateUrl:'pages/recipeView.html',
+			controller:'RecipesViewController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -45,10 +61,13 @@ app.controller('mainController', ['$scope','$localStorage',function($scope,$loca
 	}
 	$scope.logout = function() {
         $scope.token=null;
-        delete $localStorage.token;
+		delete $localStorage.token;
+		delete $localStorage.user;
         window.location="/";
     };
-
+	if($scope.existToken()){
+		window.location="#!dashboard";
+	}
 }]);
 
 app.controller('aboutController', function($scope) {

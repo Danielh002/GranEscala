@@ -29,7 +29,7 @@ mongoose.connect('mongodb://localhost:27017/cooknet',function(err){
         mongoose.connect('mongodb://cooknet:secret@ds141464.mlab.com:41464/cooknet',function(err2){
             
             if (err2) {
-                return console.log(`error to connect to DataBase  ${err}`)
+                return console.log(`error to connect to DataBase  ${err2}`)
             }
             console.log('connect to DataBase')
             app.listen(port,()=>{

@@ -12,6 +12,7 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
             if(res.status==200){
                 $localStorage.token=res.data.token;
                 $token=$localStorage.token;
+                $localStorage.user=res.data.user;
                 window.location="#!dashboard";
             }
             else if(res.status==401){
@@ -42,6 +43,7 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
               if(res.status==200){
                   $localStorage.token=res.data.token;
                   $token=$localStorage.token;
+                  $localStorage.user=res.data.user;
                   window.location="/";
               }
             },function(res){
@@ -64,6 +66,7 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
     $scope.logout = function() {
         $scope.token=null;
         delete $localStorage.token;
+        delete $localStorage.user;
         window.location="/";
     };
 

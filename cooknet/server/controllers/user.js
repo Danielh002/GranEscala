@@ -14,7 +14,7 @@ function signUp(req,res){
 
     user.save((err)=>{
         if(err) return res.status(500).send({message:'error to create user'})
-        return res.status(200).send({token:token.createToken(user)})
+        return res.status(200).send({token:token.createToken(user),user:req.body.user})
     })
 }
 
@@ -28,7 +28,8 @@ function signIn(req,res){
                     req.user=user
                     res.status(200).send({
                         message:'authenticated',
-                        token:token.createToken(user)
+                        token:token.createToken(user),
+                        user:user.user
                     })
                 })
             }
