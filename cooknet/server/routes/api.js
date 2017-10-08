@@ -6,6 +6,7 @@ const userCtrl=require('./../controllers/user')
 const auth=require('../middlewares/auth')
 const recipe=require('./recipe')
 const user=require('./user')
+const follow=require('./follow')
 
 api.post('/signIn',userCtrl.signIn)
 api.post('/signUp',userCtrl.signUp)
@@ -16,5 +17,6 @@ api.get('/private',auth.isAuth,(req,res)=>{
 })
 api.use('/user',user)
 api.use('/recipe',recipe)
+api.use('/follow',follow)
 
 module.exports=api
