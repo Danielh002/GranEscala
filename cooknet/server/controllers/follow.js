@@ -1,12 +1,18 @@
 'use strict'
 
 const mongoose=require('mongoose')
-const Recipe=require('./../models/recipe')
+const User=require('./../models/user')
 
 function followUser(req,res){
-    
-
-    res.status(200).send({message:"following user"})
+    User.update({user:req.user},{$push:{follow:req.body.user}})
+    .then(user=>{
+        if(user){
+            res.status(200).send({message:"following user"})
+        }
+    })
+    .catch(err=>{
+        res.status(500).send({message:"error to follow user"})
+    })
    
 }
 

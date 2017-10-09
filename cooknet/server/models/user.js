@@ -8,7 +8,8 @@ const UserSchema=new Schema({
     user:{type:String,unique:true,lowercase:true},
     password:{type:String,select:false},
     signupDate:{type:Date,default: Date.now()},
-    lastLogin:Date
+    lastLogin:Date,
+    follow:[String]
 })
 
 UserSchema.pre('save',(next)=>{
