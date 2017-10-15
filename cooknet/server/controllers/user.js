@@ -85,11 +85,30 @@ function updateUser(req,res){
     res.send()
 }
 
+function getUsers(req,res){
+    console.log(req.query.user)
+    console.log(req.user)
+    User.find({user:new RegExp(req.query.user, 'i')})
+    .then(users=>{
+        if(users){
+            res.send(users.map(user=>{return {user:user.user,email:user.email,following:false} }))
+        }
+        else{
+            res.status.send({message:"users dont exist"})
+        }
+    })
+    .catch(err=>{
+        res.status(500).send({message:"error to find users"})
+    })
+    // res.send([{user:"lenis96",email:"lenisandres5@gmail.com",following:false},{user:"usuario",email:"correo@gmail.com",following:true}])
+}
+
 module.exports={
     signUp,
     signIn,
     userExist,
     emailExist,
     getUser,
-    updateUser
+    updateUser,
+    getUsers
 }
