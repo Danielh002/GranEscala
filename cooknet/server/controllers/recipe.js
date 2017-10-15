@@ -4,22 +4,28 @@ const mongoose=require('mongoose')
 const Recipe=require('./../models/recipe')
 
 function createRecipe(req,res){
-    
-    const recipe=new Recipe({
-        user:req.user,
-        title:req.body.title,
-        description:req.body.description,
-        ingredients:req.body.ingredients,
-        preparation:req.body.preparation
-    })
+    console.log(req.body)
+    if(req.body.title!=undefined && req.body.description!=undefined && req.body.ingredients!=undefined && req.body.preparation!=undefined){
 
-    recipe.save()
-    .then(function(){
-        res.status(200).send({message:"recipe was created"})
-    })
-    .catch(function (err){
-        return res.status(500).send({message:"error to create recipe"})
-    })
+        const recipe=new Recipe({
+            user:req.user,
+            title:req.body.title,
+            description:req.body.description,
+            ingredients:req.body.ingredients,
+            preparation:req.body.preparation
+        })
+    
+        recipe.save()
+        .then(function(){
+            res.status(200).send({message:"recipe was created"})
+        })
+        .catch(function (err){
+            return res.status(500).send({message:"error to create recipe"})
+        })
+    }
+    else{
+        res.status(500).send({message:"cannot create a recipe without information"})
+    }
 }
 
 function getRecipeById(req,res){
@@ -57,6 +63,9 @@ function deleteRecipe(req,res){
         else{
             res.status(404).send({message:"recipe dont exist"})
         }
+    })
+    .catch(err=>{
+        res.status(500).send({message:"error to find recipe"})
     })
 }
 
