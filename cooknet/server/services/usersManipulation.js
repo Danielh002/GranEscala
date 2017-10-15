@@ -4,7 +4,6 @@ function usersFollowingOrNot(searchResult,usersFollowing,user){
     res=[]
     while(i<searchResult.length && j<usersFollowing.length){
         position=searchResult[i].localeCompare(usersFollowing[j])
-        console.log(i+" "+j)
         if(position==0){
             res.push({user:searchResult[i],follow:true})
             j++

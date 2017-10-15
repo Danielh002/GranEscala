@@ -26,12 +26,12 @@ function getFollowingUsers(req,res){
 }
 
 function searchUsers(req,res){
-    console.log(req.query.user)
     User.find({user:new RegExp(req.query.userSearch, 'i')})
     .then(users=>{
         User.findOne({user:req.query.user})
         .then(user=>{
-            res.send(usersManipulation.usersFollowingOrNot(users.map(user=>{return user.user}),user.follow,req.query.user));
+
+            res.send(usersManipulation.usersFollowingOrNot(users.map(user=>{return user.user}).sort(),user.follow.sort(),req.query.user));
         })
         .catch(err=>{
             res.status(500).send({message:"error to find user"})
