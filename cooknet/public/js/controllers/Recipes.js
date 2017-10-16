@@ -96,7 +96,14 @@ app.controller('RecipesViewController',['$scope','$routeParams','RecipesService'
 
         })
     }
-    
+    $scope.setLike=function(){
+        $scope.like=true;
+    }
+    $scope.setNotLike=function(){
+        $scope.like=false;
+    }
+
+    $scope.like=false;
     $scope.toMyRecipes=function(){
         window.location="#!dashboard/misRecetas"
     }

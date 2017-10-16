@@ -11,4 +11,8 @@
 <div>
     <h4>Preparación:</h4>
     <p>{{preparation}}</p>
-</div>  
+</div>
+<div>
+    <button type="button" class="btn btn-info" ng-if="!like" ng-click="setLike()">Me gusta</button>
+    <button type="button" class="btn btn-default" ng-if="like" ng-click="setNotLike()">Ya no megusta</button>
+</div>
