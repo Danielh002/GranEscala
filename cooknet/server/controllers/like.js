@@ -3,6 +3,26 @@
 const mongoose=require('mongoose')
 const Recipe=require('./../models/recipe')
 
+function isLike(req,res){
+    Recipe.findById(req.params.idRecipe)
+    .then(recipe=>{
+        if(recipe){
+            if(recipe.likes.indexOf(req.query.user)>=0){
+                res.send({like:true})
+            }
+            else{
+                res.send({like:false})
+            }
+        }
+        else{
+            res.status(404).send({message:"the recipe dont exist"})
+        }
+    })
+    .catch(err=>{
+        res.status(500).send({message:"error to find recipe"})
+    })
+}
+
 function setLike(req,res){
     Recipe.update({_id:req.params.idRecipe},{$push:{likes:req.user}})
     .then(user=>{
@@ -31,5 +51,6 @@ function setNotLike(req,res){
 
 module.exports={
     setLike,
-    setNotLike
+    setNotLike,
+    isLike
 }

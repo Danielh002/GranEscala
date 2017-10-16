@@ -83,7 +83,7 @@ app.controller('RecipesEditController', [ '$rootScope','$scope','$location','$lo
 
     $scope.getRecipe(); 
     }]);
-app.controller('RecipesViewController',['$scope','$routeParams','RecipesService',function($scope,$routeParams,RecipesService){
+app.controller('RecipesViewController',['$scope','$routeParams','$localStorage','RecipesService',function($scope,$routeParams,$localStorage,RecipesService){
     $scope.getRecipe=function(){
         RecipesService.getRecipeById($routeParams.id,function(res){
             $scope.title=res.data.title;
@@ -113,9 +113,19 @@ app.controller('RecipesViewController',['$scope','$routeParams','RecipesService'
         $scope.like=false;
     }
 
+    $scope.getLike=function(){
+        RecipesService.getLike($routeParams.id,$localStorage.user,function(res){
+            $scope.like=res.data.like;
+        },function(err){
+
+        })
+    }
+
     $scope.like=false;
     $scope.toMyRecipes=function(){
         window.location="#!dashboard/misRecetas"
     }
     $scope.getRecipe();
+    $scope.getLike();
+
 }])
