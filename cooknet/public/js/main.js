@@ -45,6 +45,10 @@ app.config(function($routeProvider) {
 			templateUrl:'pages/recipeView.html',
 			controller:'RecipesViewController'
 		})
+		.when('/dashboard/usuarios',{
+			templateUrl:'pages/usuarios.html',
+			controller:'Users'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

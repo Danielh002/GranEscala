@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-3 sidevar">
+        <div class="list-group">
+            <a href="#!dashboard" class="list-group-item">Dashboard</a>
+            <a href="#!dashboard/misRecetas" class="list-group-item">Mis Recetas</a>
+            <a href="#!dashboard/usuarios" class="list-group-item active">Usuarios</a>
+            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item">Vestibulum at eros</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2>Usuarios</h2>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="userSearchText" ng-change="searchUser()" placeholder="Buscar">
+                
+            </div><!-- /input-group -->
+            <div class="list-group" ng-if="searched">
+                <div class="list-group-item row" ng-repeat="user in responseSearch">
+                    <div class="justify-content-between col-md-9">
+                        <a href=""><h2>{{user.user}}</h2></a>
+                        <!-- <small>{{user.email}}</small> -->
+                    </div>
+                    <div class="col-md-3" ng-if="user.follow">
+                        <button type="button" class="btn btn-danger" ng-click="unFollowUser(user.user)">Dejar de seguir</button>
+                    </div>
+                    <div class="col-md-3" ng-if="!user.follow">
+                            <button type="button" class="btn btn-primary" ng-click="followUser(user.user)">Seguir</button>
+                        </div>
+                </div>
+            </div>
+        <!-- <a href="#!dashboard/crearReceta" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Agregar Receta</a>
+        <div class="list-group">
+            <div class="list-group-item row" ng-repeat="recipe in recipes">
+                <div class="justify-content-between col-md-9">
+                  <a href="#!dashboard/receta/{{recipe._id}}"><h2>{{recipe.title}}</h2></a>
+                  <small>{{recipe.user}}</small>
+                  <p>{{recipe.description}}</p>
+                </div>
+                <div class="col-md-3">
+                    <button  type="button" class="btn btn-default" ng-click="editRecipe(recipe._id)">
+                        <span class="glyphicon glyphicon-edit"></span>
+                      </button>
+                      <button class="btn btn-danger" ng-click="deleteRecipe(recipe._id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                </div>
+              </div>
+        </div> -->
+      </div>
+</div>
+  
