@@ -97,9 +97,19 @@ app.controller('RecipesViewController',['$scope','$routeParams','RecipesService'
         })
     }
     $scope.setLike=function(){
+        RecipesService.setLike($routeParams.id,function(res){
+
+        },function(err){
+
+        })
         $scope.like=true;
     }
     $scope.setNotLike=function(){
+        RecipesService.setNotLike($routeParams.id,function(res){
+
+        },function(err){
+            
+        })
         $scope.like=false;
     }
 
