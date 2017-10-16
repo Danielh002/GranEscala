@@ -18,7 +18,13 @@ function followUser(req,res){
 }
 
 function removeFollow(req,res){
-    res.status(200).send({message:"remove follow"})
+    User.update({user:req.user},{$pull:{follow:req.params.id}})
+    .then(user=>{
+        res.send({message:"user unfollow"})
+    })  
+    .catch(err=>{
+        res.status(500).send({message:"error to unfollow user"})
+    })
 }
 
 function getFollowingUsers(req,res){

@@ -16,7 +16,16 @@
             </div><!-- /input-group -->
             <div class="list-group" ng-if="searched">
                 <div class="list-group-item row" ng-repeat="user in responseSearch">
-                    <h4>{{user.user}}</h4>
+                    <div class="justify-content-between col-md-9">
+                        <a href=""><h2>{{user.user}}</h2></a>
+                        <!-- <small>{{user.email}}</small> -->
+                    </div>
+                    <div class="col-md-3" ng-if="user.follow">
+                        <button type="button" class="btn btn-danger" ng-click="unFollowUser(user.user)">Dejar de seguir</button>
+                    </div>
+                    <div class="col-md-3" ng-if="!user.follow">
+                            <button type="button" class="btn btn-primary" ng-click="followUser(user.user)">Seguir</button>
+                        </div>
                 </div>
             </div>
         <!-- <a href="#!dashboard/crearReceta" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Agregar Receta</a>

@@ -22,5 +22,24 @@ app.controller('Users',['$scope',"$localStorage",'UsersService',function($scope,
     $scope.toMyRecipes=function(){
         window.location="#!dashboard/misRecetas"
     }
+    $scope.followUser=function(user){
+        console.log(user)
+        UsersService.followUser({user:user},function(){
+
+        },function(err){
+
+        })
+        $scope.searchUser();
+    }
+
+    $scope.unFollowUser=function(user){
+        console.log(user+" unfollow ")
+        UsersService.unFollowUser(user,function(){
+
+        },function(err){
+            
+        })
+        $scope.searchUser();
+    }
     $scope.searched=false;
 }])
