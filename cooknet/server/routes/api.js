@@ -8,6 +8,7 @@ const recipe=require('./recipe')
 const user=require('./user')
 const follow=require('./follow')
 const like=require('./like')
+const dashboard=require('./dashboard')
 
 api.post('/signIn',userCtrl.signIn)
 api.post('/signUp',userCtrl.signUp)
@@ -20,5 +21,6 @@ api.use('/user',user)
 api.use('/recipe',recipe)
 api.use('/follow',follow)
 api.use('/like/',like)
+api.use('/dashboard',dashboard)
 
 module.exports=api
