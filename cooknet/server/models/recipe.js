@@ -10,6 +10,7 @@ const RecipeSchema=new Schema({
     ingredients:{type:String},
     preparation:{type:String},
     dateCreates:{type:Date,default: Date.now()},
+    comments: [String],
     likes:[String]
 })
 

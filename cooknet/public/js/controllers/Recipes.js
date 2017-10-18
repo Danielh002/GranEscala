@@ -69,6 +69,7 @@ app.controller('RecipesEditController', [ '$rootScope','$scope','$location','$lo
             $scope.description=res.data.description;
             $scope.ingredients=res.data.ingredients;
             $scope.preparation=res.data.preparation;
+            //$scope.comments= res.data.comments;
             console.log(res);
         },function(err){
 
@@ -91,6 +92,7 @@ app.controller('RecipesViewController',['$scope','$routeParams','$localStorage',
             $scope.description=res.data.description;
             $scope.ingredients=res.data.ingredients;
             $scope.preparation=res.data.preparation;
+            $scope.comments= res.data.comments;
             console.log(res);
         },function(err){
 
