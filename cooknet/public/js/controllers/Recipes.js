@@ -34,33 +34,46 @@ app.controller('RecipesViewRecipesController', [ '$rootScope','$scope','$locatio
 app.controller('RecipesCreateController',['$scope','RecipesService',function($scope,RecipesService){
     
     $scope.createRecipe=function(){
-        data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation}
-        RecipesService.createRecipe(data,function(res){
-            if(res.status==200){
-                
-            }
-            $scope.toMyRecipes();
-        },function(err){
-            
-        })
+        $scope.message=null;
+        if($scope.title!=undefined && $scope.description!=undefined && $scope.ingredients!=undefined && $scope.preparation!=undefined){
+            data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation}
+            RecipesService.createRecipe(data,function(res){
+                if(res.status==200){
+                    
+                }
+                $scope.toMyRecipes();
+            },function(err){
+              $scope.message="erro al intentar crear la receta";  
+            })
+        }
+        else{
+            $scope.message="Por favor llene todos los campos";
+        }
     }
+    $scope.message=null;
     $scope.toMyRecipes=function(){
         window.location="#!dashboard/misRecetas"
     }
 }])
 
 app.controller('RecipesEditController', [ '$rootScope','$scope','$location','$localStorage','RecipesService','$routeParams', function( $rootScope,$scope,$location,$localStorage,RecipesService,$routeParams) {
-    
+    $scope.message=null;
     $scope.updateRecipe=function(){
-        data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation}
-        RecipesService.updateRecipe($routeParams.id,data,function(res){
-            if(res.status==200){
-                
-            }
-            $scope.toMyRecipes();
-        },function(err){
-            
-        })
+        $scope.message=null;
+        if($scope.title!="" && $scope.description!="" && $scope.ingredients!="" && $scope.preparation!=""){
+            data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation}
+            RecipesService.updateRecipe($routeParams.id,data,function(res){
+                if(res.status==200){
+                    
+                }
+                $scope.toMyRecipes();
+            },function(err){
+                $scope.message="erro al intentar actualizar la receta"; 
+            })
+        }
+        else{
+            $scope.message="Por favor llene todos los campos";
+        }
     }
     
     $scope.getRecipe=function(){
@@ -83,7 +96,7 @@ app.controller('RecipesEditController', [ '$rootScope','$scope','$location','$lo
 
     $scope.getRecipe(); 
     }]);
-app.controller('RecipesViewController',['$scope','$routeParams','RecipesService',function($scope,$routeParams,RecipesService){
+app.controller('RecipesViewController',['$scope','$routeParams','$localStorage','RecipesService',function($scope,$routeParams,$localStorage,RecipesService){
     $scope.getRecipe=function(){
         RecipesService.getRecipeById($routeParams.id,function(res){
             $scope.title=res.data.title;
@@ -97,10 +110,28 @@ app.controller('RecipesViewController',['$scope','$routeParams','RecipesService'
         })
     }
     $scope.setLike=function(){
+        RecipesService.setLike($routeParams.id,function(res){
+
+        },function(err){
+
+        })
         $scope.like=true;
     }
     $scope.setNotLike=function(){
+        RecipesService.setNotLike($routeParams.id,function(res){
+
+        },function(err){
+            
+        })
         $scope.like=false;
+    }
+
+    $scope.getLike=function(){
+        RecipesService.getLike($routeParams.id,$localStorage.user,function(res){
+            $scope.like=res.data.like;
+        },function(err){
+
+        })
     }
 
     $scope.like=false;
@@ -108,4 +139,6 @@ app.controller('RecipesViewController',['$scope','$routeParams','RecipesService'
         window.location="#!dashboard/misRecetas"
     }
     $scope.getRecipe();
+    $scope.getLike();
+
 }])

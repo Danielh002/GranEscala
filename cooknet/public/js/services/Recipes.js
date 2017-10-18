@@ -25,7 +25,12 @@ app.service('RecipesService',["$localStorage","$http",function($localStorage,$ht
 
     this.setNotLike=function(id,success,error){
         $http.defaults.headers.common['Authorization']="Bearer "+$localStorage.token;
-        $http.delete('./api/notLike/'+id).then(success).catch(error);
+        $http.delete('./api/like/'+id).then(success).catch(error);
+    }
+
+    this.getLike=function(id,user,success,error){
+        //$http.defaults.headers.common['Authorization']="Bearer "+$localStorage.token;
+        $http.get('./api/like/'+id+"?user="+user).then(success).catch(error);
     }
 
     //falta definir header de authorization
