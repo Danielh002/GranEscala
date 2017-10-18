@@ -27,7 +27,7 @@ app.config(function($routeProvider) {
 		})
 		.when('/dashboard',{
 			templateUrl:'pages/dashboard.html',
-			controller: 'AuthController'
+			controller: 'DashboardController'
 		})
 		.when('/dashboard/misRecetas',{
 			templateUrl:'pages/misRecetas.html',
