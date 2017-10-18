@@ -16,7 +16,7 @@ function trendings(req,res){
 function recipesFollowing(req,res){
     User.findOne({user:req.query.user})
     .then(user=>{
-        Recipe.find({user:{ $in: [user.follow]}},"_id title description user dateCreates").sort({dateCreates:-1}).limit(10)
+        Recipe.find({user:{ $in: user.follow}},"_id title description user dateCreates").sort({dateCreates:-1}).limit(10)
         .then(recipes=>{
             res.send(recipes)
         })

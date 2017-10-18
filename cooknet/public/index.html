@@ -11,6 +11,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+    <!-- Font Monserrat-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   </head>
   <body ng-controller='mainController'>
     <header>
@@ -29,7 +32,6 @@
               <li class="active"><a href="#!/">Inicio</a></li>
               <li><a href="#!acerca">Acerca de</a></li>
               <li><a href="#!contacto">Contacto</a></li>
-
               <li ng-if="! existToken()"><a href="#!login">Login</a></li>
               <li ng-if="! existToken()"><a href="#!signUp">Registrarse</a></li>
               <li ng-if="existToken()"><a href="" ng-click="logout()">Cerrar Sesión</a></li>

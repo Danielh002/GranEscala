@@ -4,8 +4,10 @@
 	padding-left: 10%;
 }
 
-/*.color-nav {
+.color-nav {
 	background-color: #B40404;
+	border-radius: 0;
+	border: 0;
 	color:#B40404;
 }
 
@@ -13,7 +15,7 @@
 	background-color: #8A0808;
 	color: #8A0808;
 }
-*/
+
 .navbar-default {
     background-color: #B40404;
     border-color: #E7E7E7;
@@ -33,11 +35,21 @@
 	background-color: #8A0808;
 }
 
-.navbar-default-nabar
 h3 {
   display: inline-block;
   padding: 10px;
   background: #B9121B;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+p.capitalize {
+	text-transform: capitalize;
+	font-size: 180%;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+html *{
+	font-family: 'Montserrat', sans-serif !important;
 }
