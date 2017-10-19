@@ -37,7 +37,7 @@ app.controller('RecipesCreateController',['$scope','RecipesService',function($sc
         data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation}
         RecipesService.createRecipe(data,function(res){
             if(res.status==200){
-                
+                console.log(res.data)
             }
             $scope.toMyRecipes();
         },function(err){
@@ -69,7 +69,7 @@ app.controller('RecipesEditController', [ '$rootScope','$scope','$location','$lo
             $scope.description=res.data.description;
             $scope.ingredients=res.data.ingredients;
             $scope.preparation=res.data.preparation;
-            //$scope.comments= res.data.comments;
+            $scope.comments= res.data.comments;
             console.log(res);
         },function(err){
 
@@ -119,7 +119,12 @@ app.controller('RecipesViewController',['$scope','$routeParams','$localStorage',
         RecipesService.getLike($routeParams.id,$localStorage.user,function(res){
             $scope.like=res.data.like;
         },function(err){
+        })
+    }
 
+    $scope.addComment=function(){
+        RecipesService.addComment($routeParams.id,function(res){
+        },function(err){
         })
     }
 
@@ -129,5 +134,5 @@ app.controller('RecipesViewController',['$scope','$routeParams','$localStorage',
     }
     $scope.getRecipe();
     $scope.getLike();
-
+    $scope.comments=[];
 }])

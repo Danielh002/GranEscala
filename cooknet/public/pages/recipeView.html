@@ -15,12 +15,12 @@
 <div>
     <h4>Comentarios:</h4>
     <li ng-repeat="comment in comments">
-    	<p>{{comment}}</p>
+    	<!-- <p>{{comment}}</p> -->
     </li>
 </div>
 <div class="form-group">
         <label for="comment">Escribe un comentario</label>
-        <textarea style="resize:none" class="form-control" id="comment" rows="7" ng-model="comment"></textarea>
+        <textarea style="resize:none" class="form-control"  rows="7" ng-model="commentInput"></textarea>
         <button type="button" class="btn btn-info" ng-Click="addComment()"> Agregar comentario </button>
 </div>
 <div>
