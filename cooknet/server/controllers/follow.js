@@ -28,7 +28,19 @@ function removeFollow(req,res){
 }
 
 function getFollowingUsers(req,res){
-    res.send([{user:"usuario",email:"user@email.com"}]);
+    User.findOne({user:req.query.user})
+    .then(user=>{
+        if(user.follow){
+            res.send({usersFollowing:user.follow})
+        }
+        else{
+            res.send({usersFollowing:[]})
+        }
+        
+    })
+    .catch(err=>{
+        res.status(500).send({message:"error to find user"})
+    })
 }
 
 function searchUsers(req,res){
