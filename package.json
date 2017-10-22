@@ -17,8 +17,12 @@
     "express": "^4.15.4",
     "gulp": "^3.9.1",
     "jwt-simple": "^0.5.1",
+    "latest-version": "^3.1.0",
     "moment": "^2.18.1",
     "mongoose": "4.6.0",
     "sha256": "^0.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }

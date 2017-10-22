@@ -13,6 +13,18 @@
     <p>{{preparation}}</p>
 </div>
 <div>
+    <h4>Comentarios:</h4>
+    <li ng-repeat="comment in comments">
+    	<p>{{comment.user}}</p> 
+    	<p>{{comment.content}}</p> 
+    </li>
+</div>
+<div class="form-group">
+        <label for="comment">Escribe un comentario</label>
+        <textarea style="resize:none" class="form-control"  rows="7" ng-model="content"></textarea>
+        <button type="button" class="btn btn-info" ng-Click="addComment()"> Agregar comentario </button>
+</div>
+<div>
     <button type="button" class="btn btn-info" ng-if="!like" ng-click="setLike()">Me gusta</button>
     <button type="button" class="btn btn-default" ng-if="like" ng-click="setNotLike()">Ya no megusta</button>
 </div>

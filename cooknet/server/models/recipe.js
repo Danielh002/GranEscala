@@ -2,6 +2,8 @@
 
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema
+const User=require('./../models/user')
+
 
 const RecipeSchema=new Schema({
     user:{type :String},
@@ -10,9 +12,8 @@ const RecipeSchema=new Schema({
     ingredients:{type:String},
     preparation:{type:String},
     dateCreates:{type:Date,default: Date.now()},
+    comments: [{user:{type:String},content:{type:String}}],
     likes:[String]
 })
-
-
 
 module.exports=mongoose.model('Recipe',RecipeSchema)
