@@ -123,7 +123,9 @@ app.controller('RecipesViewController',['$scope','$routeParams','$localStorage',
     }
 
     $scope.addComment=function(){
-        RecipesService.addComment($routeParams.id,function(res){
+        data={content:$scope.content}
+        RecipesService.addComment($routeParams.id,data,function(res){
+            $scope.getRecipe();
         },function(err){
         })
     }
@@ -134,5 +136,4 @@ app.controller('RecipesViewController',['$scope','$routeParams','$localStorage',
     }
     $scope.getRecipe();
     $scope.getLike();
-    $scope.comments=[];
 }])

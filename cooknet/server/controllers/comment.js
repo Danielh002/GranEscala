@@ -4,19 +4,21 @@ const mongoose=require('mongoose')
 const Recipe=require('./../models/recipe')
 
 function addComment(req,res){
-    Recipe.update({_id:req.params.idRecipe},{$push:{comments:req.user}})
+    console.log("aqui")
+    Recipe.update({_id:req.params.idRecipe},{$push:{comments:{user : req.user, content : req.body.content}}})
     .then(user=>{
         if(user){
-            res.status(200).send({message:"comment recipe"})
+            res.status(200).send({message:"Add Comment"})
         }
     })
     .catch(err=>{
-        res.status(500).send({message:"error to comment a recipe"})
+        console.log(err)
+        res.status(500).send({message:"Error to Add Comment"})
     })
    
 }
 
-
 module.exports={
     addComment
 }
+
