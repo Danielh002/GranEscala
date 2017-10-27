@@ -5,7 +5,7 @@ const Recipe=require('./../models/recipe')
 
 function addComment(req,res){
     console.log("aqui")
-    Recipe.update({_id:req.params.idRecipe},{$push:{comments:{user : req.user, content : req.body.content}}})
+    Recipe.update({_id:req.params.idRecipe},{$push:{comments:{user : req.user,content : req.body.content,createdAt:Date.now()}}})
     .then(user=>{
         if(user){
             res.status(200).send({message:"Add Comment"})
