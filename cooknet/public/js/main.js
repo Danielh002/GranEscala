@@ -53,6 +53,10 @@ app.config(function($routeProvider) {
 			templateUrl:'pages/recetas.html',
 			controller:'searchRecipe'
 		})
+		.when('/dashboardAdmin/',{
+			templateUrl:'pages/dashboardAdmin.html',
+			controller:'DashboardAdminController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -67,14 +71,27 @@ app.controller('mainController', ['$scope','$localStorage',function($scope,$loca
 			return false;
 		}
 	}
+	$scope.isAdmin=function(){
+		if($localStorage.isAdmin){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	$scope.logout = function() {
         $scope.token=null;
 		delete $localStorage.token;
 		delete $localStorage.user;
         window.location="/";
-    };
+	};
 	if($scope.existToken()){
-		window.location="#!dashboard";
+		if($scope.isAdmin()){
+			window.location="#!dashboardAdmin";
+		}
+		else{
+			window.location="#!dashboard";
+		}
 	}
 }]);
 

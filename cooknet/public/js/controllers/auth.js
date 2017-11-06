@@ -13,7 +13,12 @@ app.controller('AuthController', [ '$rootScope','$scope','$location','$localStor
                 $localStorage.token=res.data.token;
                 $token=$localStorage.token;
                 $localStorage.user=res.data.user;
+                $localStorage.isAdmin=res.data.isAdmin;
                 window.location="#!dashboard";
+                if(res.data.isAdmin){
+                    window.location="#!dashboardAdmin";
+                }
+                console.log(res.data)
             }
             else if(res.status==401){
                 console.log("usuario o contraseña incorrecta");
