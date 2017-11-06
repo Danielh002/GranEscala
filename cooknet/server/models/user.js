@@ -9,7 +9,8 @@ const UserSchema=new Schema({
     password:{type:String,select:false},
     signupDate:{type:Date,default: Date.now()},
     lastLogin:Date,
-    follow:[String]
+    follow:[String],
+    isAdmin:{type:Boolean,default:false}
 })
 
 UserSchema.pre('save',(next)=>{
