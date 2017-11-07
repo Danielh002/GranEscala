@@ -11,6 +11,7 @@ const RecipeSchema=new Schema({
     description:{type:String},
     ingredients:{type:String},
     preparation:{type:String},
+    categories: [String],
     dateCreates:{type:Date,default: Date.now()},
     comments: [{user:{type:String},content:{type:String},createdAt:{type:Date,default: Date.now()}}],
     likes:[String]

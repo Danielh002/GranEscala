@@ -32,19 +32,33 @@ app.controller('RecipesViewRecipesController', [ '$rootScope','$scope','$locatio
     }]);
 
 app.controller('RecipesCreateController',['$scope','RecipesService',function($scope,RecipesService){
+    $scope.categories = ["Comidas Exoticas","Comidas rápidas","Carnes","Ensaladas","Pasta","Purés","Tortillas"];
+    $scope.selection = [];
     
-    $scope.createRecipe=function(){
+    // Toggle selection for a given category by name
+    $scope.toggleSelection = function toggleSelection(categorieName) {
+        var idx = $scope.selection.indexOf(categorieName);
+    // Is currently selected
+    if (idx > -1) {
+        $scope.selection.splice(idx, 1);
+    }
+    // Is newly selected
+    else {
+        $scope.selection.push(categorieName);
+    }
+    };
 
+    $scope.createRecipe=function(){
         $scope.message=null;
-        if($scope.title!=undefined && $scope.description!=undefined && $scope.ingredients!=undefined && $scope.preparation!=undefined){
-            data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation}
+        if($scope.title!=undefined && $scope.description!=undefined && $scope.ingredients!=undefined && $scope.preparation!=undefined && $scope.selection.length > 0){
+            data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation,categories:$scope.selection}
             RecipesService.createRecipe(data,function(res){
                 if(res.status==200){
                     
                 }
                 $scope.toMyRecipes();
             },function(err){
-              $scope.message="erro al intentar crear la receta";  
+              $scope.message="error al intentar crear la receta";  
             })
         }
         else{
@@ -58,11 +72,28 @@ app.controller('RecipesCreateController',['$scope','RecipesService',function($sc
 }])
 
 app.controller('RecipesEditController', [ '$rootScope','$scope','$location','$localStorage','RecipesService','$routeParams', function( $rootScope,$scope,$location,$localStorage,RecipesService,$routeParams) {
+    $scope.categories = ["Comidas Exoticas","Comidas rápidas","Carnes","Ensaladas","Pasta","Purés","Tortillas"];
+    $scope.selection = [];
     $scope.message=null;
+
+    $scope.toggleSelection = function toggleSelection(categorieName) {
+        var idx = $scope.selection.indexOf(categorieName);
+
+    // Is currently selected
+    if (idx > -1) {
+        $scope.selection.splice(idx, 1);
+    }
+
+    // Is newly selected
+    else {
+        $scope.selection.push(categorieName);
+    }
+    };
+
     $scope.updateRecipe=function(){
         $scope.message=null;
-        if($scope.title!="" && $scope.description!="" && $scope.ingredients!="" && $scope.preparation!=""){
-            data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation}
+        if($scope.title!="" && $scope.description!="" && $scope.ingredients!="" && $scope.preparation!="" && $scope.selection.length > 0 ){
+            data={title:$scope.title,description:$scope.description,ingredients:$scope.ingredients,preparation:$scope.preparation,categories:$scope.selection}
             RecipesService.updateRecipe($routeParams.id,data,function(res){
                 if(res.status==200){
                     
@@ -99,6 +130,9 @@ app.controller('RecipesEditController', [ '$rootScope','$scope','$location','$lo
     $scope.getRecipe(); 
     }]);
 app.controller('RecipesViewController',['$scope','$routeParams','$localStorage','RecipesService',function($scope,$routeParams,$localStorage,RecipesService){
+    $scope.categoriesClass=["label label-warning","label label-info","label label-success"];
+    $scope.categories = [];
+
     $scope.getRecipe=function(){
         RecipesService.getRecipeById($routeParams.id,function(res){
             $scope.title=res.data.title;
@@ -107,6 +141,14 @@ app.controller('RecipesViewController',['$scope','$routeParams','$localStorage',
             $scope.ingredients=res.data.ingredients;
             $scope.preparation=res.data.preparation;
             $scope.comments= res.data.comments;
+            console.log(res.data.categories)
+            for(var i=0; i< res.data.categories.length; i++){
+                var rand = $scope.categoriesClass[Math.floor(Math.random() * $scope.categoriesClass.length)];
+                var pair = {class: rand, category: res.data.categories[i] };
+                $scope.categories.push(pair);
+                pair = [];
+            }
+            console.log($scope.categories);
             console.log(res);
         },function(err){
 

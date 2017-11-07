@@ -5,14 +5,15 @@ const Recipe=require('./../models/recipe')
 
 function createRecipe(req,res){
     console.log(req.body)
-    if(req.body.title!=undefined && req.body.description!=undefined && req.body.ingredients!=undefined && req.body.preparation!=undefined){
+    if(req.body.title!=undefined && req.body.description!=undefined && req.body.ingredients!=undefined && req.body.preparation!=undefined && req.body.categories!=undefined){
 
         const recipe=new Recipe({
             user:req.user,
             title:req.body.title,
             description:req.body.description,
             ingredients:req.body.ingredients,
-            preparation:req.body.preparation
+            preparation:req.body.preparation,
+            categories:req.body.categories
         })
     
         recipe.save()

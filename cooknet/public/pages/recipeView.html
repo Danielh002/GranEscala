@@ -2,6 +2,11 @@
 	<center>
 	<img src="https://st2.depositphotos.com/3262111/11007/v/950/depositphotos_110072050-stock-illustration-fast-food-computer-symbol.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
 	<h2 class="media-heading"> {{title}} <small> {{user}} </small></h3>
+    <span><strong> Categorias: </strong></span>
+
+    <label ng-repeat="category in categories">
+    <span class={{category.class}} > {{category.category}}</span>    
+	</label>
 	<hr>
 	<p class="text-left"><strong>Descripcion: </strong><br>
 	    {{description}}</p>
