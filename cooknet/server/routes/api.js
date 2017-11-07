@@ -10,6 +10,8 @@ const follow=require('./follow')
 const like=require('./like')
 const comment=require('./comment')
 const dashboard=require('./dashboard')
+const searchRecipe=require('./searchRecipe')
+const admin=require('./admin')
 
 api.post('/signIn',userCtrl.signIn)
 api.post('/signUp',userCtrl.signUp)
@@ -24,5 +26,6 @@ api.use('/follow',follow)
 api.use('/like/',like)
 api.use('/comment/',comment)
 api.use('/dashboard',dashboard)
-
+api.use('/searchRecipe',searchRecipe)
+api.use('/admin',admin)
 module.exports=api

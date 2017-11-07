@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-3 sidevar">
+        <div class="list-group">
+            <a href="#!dashboard" class="list-group-item">Dashboard</a>
+            <a href="#!dashboard/misRecetas" class="list-group-item">Mis Recetas</a>
+            <a href="#!dashboard/usuarios" class="list-group-item active">Usuarios</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2>Recetas</h2>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="recipeSearchText" ng-change="searchRecipe()" placeholder="Buscar">
+                
+            </div><!-- /input-group -->
+            <div class="list-group-item row" ng-repeat="recipe in responseSearch">
+				<div class="col-md-9">
+					<a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a> 
+					<small> autor: {{recipe.user}}</small>
+				  	<br>{{recipe.description}}
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-danger" ng-click="deleteRecipe(recipe._id)">
+					<span class="glyphicon glyphicon-trash"></span>
+					</button>
+				</div>			
+            </div>
+      </div>
+</div>
+  
