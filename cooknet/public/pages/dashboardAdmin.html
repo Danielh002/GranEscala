@@ -13,8 +13,16 @@
                 
             </div><!-- /input-group -->
             <div class="list-group-item row" ng-repeat="recipe in responseSearch">
-                <a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a>
-                <br>{{recipe.description}}
+				<div class="col-md-9">
+					<a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a> 
+					<small> autor: {{recipe.user}}</small>
+				  	<br>{{recipe.description}}
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-danger" ng-click="deleteRecipe(recipe._id)">
+					<span class="glyphicon glyphicon-trash"></span>
+					</button>
+				</div>			
             </div>
       </div>
 </div>

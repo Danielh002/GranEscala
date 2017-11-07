@@ -1,10 +1,10 @@
-app.controller('DashboardAdminController',['$scope',"$localStorage",'DashboardAdminService',function($scope,$localStorage,searchRecipeService){
+app.controller('DashboardAdminController',['$scope',"$localStorage",'DashboardAdminService',function($scope,$localStorage,DashboardAdminService){
     
     $scope.searchRecipe=function(){
         console.log($scope.recipeSearchText);
         $scope.searched=true;
         if($scope.recipeSearchText!=""){
-            searchRecipeService.searchRecipe($scope.recipeSearchText,function(res){
+            DashboardAdminService.searchRecipe($scope.recipeSearchText,function(res){
                 $scope.responseSearch=res.data;
                 console.log(res.data);
                 if($scope.responseSearch.length==0){
@@ -23,6 +23,15 @@ app.controller('DashboardAdminController',['$scope',"$localStorage",'DashboardAd
     }
     $scope.toMyRecipes=function(){
         window.location="#!dashboard/misRecetas"
+    }
+    $scope.deleteRecipe=function(id){
+        DashboardAdminService.deleteRecipe(id,function(res){
+            if(res.status==200){
+                $scope.searchRecipe();
+            }
+        },function(err){
+
+        })
     }
     
 }])

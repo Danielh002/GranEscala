@@ -3,7 +3,10 @@ app.service('DashboardAdminService',["$localStorage","$http",function($localStor
         $http.get('./api/searchRecipe/'+text).then(success).catch(error);
     }
 
-
-    //falta definir header de authorization
+    this.deleteRecipe=function(id,success,error){
+        $http.defaults.headers.common['Authorization']="Bearer "+$localStorage.token;
+        $http.delete('./api/admin/recipe/'+id).then(success).catch(error);
+    }
+    
 
 }]);
