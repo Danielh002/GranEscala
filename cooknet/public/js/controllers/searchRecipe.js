@@ -5,9 +5,11 @@ app.controller('searchRecipe',['$scope',"$localStorage",'searchRecipeService',fu
         $scope.searched=true;
         if($scope.recipeSearchText!=""){
             searchRecipeService.searchRecipe($scope.recipeSearchText,function(res){
-                $scope.responseSearch=res.data;
-                console.log(res.data);
-                if($scope.responseSearch.length==0){
+                $scope.responseSearch=res.data
+                console.log($scope.responseSearch);
+                console.log($scope.responseSearch.byTittle);
+                console.log($scope.responseSearch.byCategory);
+                if($scope.responseSearch.byTittle.length==0 && $scope.responseSearch.byCategory.length==0){
                     $scope.message="No hay resultados que coinsidan con \""+$scope.userSearchText+"\"";
                 }
                 else{
@@ -24,5 +26,4 @@ app.controller('searchRecipe',['$scope',"$localStorage",'searchRecipeService',fu
     $scope.toMyRecipes=function(){
         window.location="#!dashboard/misRecetas"
     }
-    
 }])

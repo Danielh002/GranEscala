@@ -12,7 +12,14 @@
                 <input type="text" class="form-control" ng-model="recipeSearchText" ng-change="searchRecipe()" placeholder="Buscar">
                 
             </div><!-- /input-group -->
-            <div class="list-group-item row" ng-repeat="recipe in responseSearch">
+            <div class="list-group-item row" ng-repeat="recipe in responseSearch.byTittle">
+                <a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a>
+                <br>{{recipe.description}}
+            </div>
+            <div ng-model="responseSearch">
+                <br>{{responseSearch.byTittle}}
+            </div>
+            <div class="list-group-item row" ng-repeat="recipe in responseSearch.byCategory">
                 <a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a>
                 <br>{{recipe.description}}
             </div>
