@@ -31,10 +31,33 @@ app.controller('RecipesViewRecipesController', [ '$rootScope','$scope','$locatio
     $scope.setRecipes();
     }]);
 
-app.controller('RecipesCreateController',['$scope','RecipesService',function($scope,RecipesService){
+app.controller('RecipesCreateController',['$scope','RecipesService','Upload','$localStorage','$timeout',function($scope,RecipesService,Upload,$localStorage,$timeout){
     $scope.categories = ["Comidas Exoticas","Comidas rápidas","Carnes","Ensaladas","Pasta","Purés","Tortillas"];
     $scope.selection = [];
     
+    $scope.uploadFiles = function(file, errFiles) {
+        $scope.f = file;
+        $scope.errFile = errFiles && errFiles[0];
+        if (file) {
+            file.upload = Upload.upload({
+                url: './api/recipe/image',
+                data: {file: file}
+            });
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                });
+            }, function (response) {
+                if (response.status > 0)
+                    $scope.errorMsg = response.status + ': ' + response.data;
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 * 
+                                         evt.loaded / evt.total));
+            });
+        }   
+    }
+
     // Toggle selection for a given category by name
     $scope.toggleSelection = function toggleSelection(categorieName) {
         var idx = $scope.selection.indexOf(categorieName);

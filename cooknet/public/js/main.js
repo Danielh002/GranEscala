@@ -1,5 +1,5 @@
 // Creación del módulo
-var app = angular.module('myApp', ['ngRoute','ngStorage']);
+var app = angular.module('myApp', ['ngRoute','ngStorage','ngFileUpload']);
 
 // Configuración de las rutas
 app.config(function($routeProvider) {
