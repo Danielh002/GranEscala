@@ -14,7 +14,8 @@ const RecipeSchema=new Schema({
     categories: [String],
     dateCreates:{type:Date,default: Date.now()},
     comments: [{user:{type:String},content:{type:String},createdAt:{type:Date,default: Date.now()}}],
-    likes:[String]
+    likes:[String],
+    imageSrc:{type:String,default:null}
 })
 
 module.exports=mongoose.model('Recipe',RecipeSchema)
