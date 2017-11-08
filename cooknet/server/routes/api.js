@@ -12,6 +12,7 @@ const comment=require('./comment')
 const dashboard=require('./dashboard')
 const searchRecipe=require('./searchRecipe')
 const admin=require('./admin')
+const invite=require('./invite')
 
 api.post('/signIn',userCtrl.signIn)
 api.post('/signUp',userCtrl.signUp)
@@ -28,4 +29,5 @@ api.use('/comment/',comment)
 api.use('/dashboard',dashboard)
 api.use('/searchRecipe',searchRecipe)
 api.use('/admin',admin)
+api.use('/invite',invite)
 module.exports=api
