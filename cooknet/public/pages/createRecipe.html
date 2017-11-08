@@ -5,6 +5,25 @@
             <label for="title">Titulo de la receta</label>
             <input type="text" class="form-control" id="title" placeholder="" ng-model="title">
         </div>
+
+        <form name="form">
+                <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+            Select File</button>
+        </form>
+
+        <label for="categories"> Categorias:  </label>
+        <br>  
+        <label ng-repeat="categoriesName in categories">
+            <input 
+                type="checkbox" 
+                name="selectedCategories[]" 
+                values="{{categoriesName}}"
+                ng-checked="selection.indexOf(categoriesName) > -1"
+                ng-click="toggleSelection(categoriesName)"
+            > {{categoriesName}}
+            <br>    
+        </label>
         
         <div class="form-group">
             <label for="description">Descripcion</label>

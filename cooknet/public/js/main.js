@@ -1,5 +1,5 @@
 // Creación del módulo
-var app = angular.module('myApp', ['ngRoute','ngStorage']);
+var app = angular.module('myApp', ['ngRoute','ngStorage','ngFileUpload']);
 
 // Configuración de las rutas
 app.config(function($routeProvider) {
@@ -49,6 +49,19 @@ app.config(function($routeProvider) {
 			templateUrl:'pages/usuarios.html',
 			controller:'Users'
 		})
+		.when('/dashboard/recetas',{
+			templateUrl:'pages/recetas.html',
+			controller:'searchRecipe'
+		})
+		.when('/dashboardAdmin/',{
+			templateUrl:'pages/dashboardAdmin.html',
+			controller:'DashboardAdminController'
+		})
+		.when('/dashboard/invitar',{
+			templateUrl:'pages/invitar.html',
+			controller:'InviteController'
+
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -63,14 +76,27 @@ app.controller('mainController', ['$scope','$localStorage',function($scope,$loca
 			return false;
 		}
 	}
+	$scope.isAdmin=function(){
+		if($localStorage.isAdmin){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	$scope.logout = function() {
         $scope.token=null;
 		delete $localStorage.token;
 		delete $localStorage.user;
         window.location="/";
-    };
+	};
 	if($scope.existToken()){
-		window.location="#!dashboard";
+		if($scope.isAdmin()){
+			window.location="#!dashboardAdmin";
+		}
+		else{
+			window.location="#!dashboard";
+		}
 	}
 }]);
 

@@ -1,20 +1,63 @@
-<h3 id="color-posts">{{title}}</h3>
-<div class="content-box">
-	<h4>Autor: {{user}}</h4>
-	<div>
-	    <h4>Descripción:</h4>
-	    <p>{{description}}</p>
-	</div>
-	<div style=" white-space: pre-line;">
-	    <h4>Ingredientes:</h4>
-	    {{ingredients}}
-	</div>
-	<div>
-	    <h4>Preparación:</h4>
-	    <p>{{preparation}}</p>
-	</div>
+<div class="container">
+	<center>
+	<img src="https://st2.depositphotos.com/3262111/11007/v/950/depositphotos_110072050-stock-illustration-fast-food-computer-symbol.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+	<h2 class="media-heading"> {{title}} <small> {{user}} </small></h3>
+    <span><strong> Categorias: </strong></span>
+
+    <label ng-repeat="category in categories">
+    <span class={{category.class}} > {{category.category}}</span>    
+	</label>
+	<hr>
+	<p class="text-left"><strong>Descripcion: </strong><br>
+	    {{description}}</p>
+	<br>
+	<hr>
+	<p class="text-left"><strong>Ingedientes: </strong><br>
+	    {{ingredients}}</p>
+	<br>
+	<hr>
+	<p class="text-left"><strong>Preparación: </strong><br>
+	    {{preparation}}</p>
+	<br>
+	<hr>
+	</center>
 </div>
+
 <div>
-    <button type="button" class="btn btn-info" ng-if="!like" ng-click="setLike()">Me gusta</button>
-    <button type="button" class="btn btn-default" ng-if="like" ng-click="setNotLike()">Ya no megusta</button>
+    <button type="button" class="btn btn-info" ng-if="!like" ng-click="setLike()">Like</button>
+    <button type="button" class="btn btn-default" ng-if="like" ng-click="setNotLike()">Dislike</button>
 </div>
+
+<div>
+	<div class="container">
+		<div class="row">
+				<div class="col-sm-12">
+						<h2>Comentarios de los usuarios </h3>
+				</div><!-- /col-sm-12 -->
+		</div><!-- /row -->
+		<div class="row" ng-repeat="comment in comments">
+				<div class="col-xs-1">
+					<div class="thumbnail">
+						<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+					</div><!-- /thumbnail -->
+				</div><!-- /col-sm-1 -->
+
+				<div class="col-xs-11">
+					<div class="panel panel-default">
+							<div class="panel-heading">
+		   						<strong>{{comment.user}} </strong> <span class="text-muted"> Realizado en :{{comment.createdAt}}</span>
+		    				</div>		
+		    				<div class="panel-body">
+		   						{{comment.content}}
+		    				</div><!-- /panel-body -->
+		    		</div><!-- /panel panel-default -->
+		    	</div><!-- /col-sm-5 -->
+		</div><!-- /row -->
+	</div><!-- /container -->
+</div>
+<div class="form-group">
+        <label for="comment">Escribe un comentario</label>
+        <textarea style="resize:none" class="form-control"  rows="7" ng-model="content"></textarea>
+        <button type="button" class="btn btn-info" ng-Click="addComment()"> Agregar comentario </button>
+</div>
+
