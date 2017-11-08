@@ -1,5 +1,5 @@
 // Creación del módulo
-var app = angular.module('myApp', ['ngRoute','ngStorage']);
+var app = angular.module('myApp', ['ngRoute','ngStorage','ngFileUpload']);
 
 // Configuración de las rutas
 app.config(function($routeProvider) {
@@ -56,6 +56,11 @@ app.config(function($routeProvider) {
 		.when('/dashboardAdmin/',{
 			templateUrl:'pages/dashboardAdmin.html',
 			controller:'DashboardAdminController'
+		})
+		.when('/dashboard/invitar',{
+			templateUrl:'pages/invitar.html',
+			controller:'InviteController'
+
 		})
 		.otherwise({
 			redirectTo: '/'

@@ -10,5 +10,6 @@ recipe.get('/:id',recipeCtrl.getRecipeById)
 recipe.put('/:id',auth.isAuth,recipeCtrl.updateRecipe)
 recipe.delete('/:id',auth.isAuth,recipeCtrl.deleteRecipe)
 recipe.get('/byUser/:user',recipeCtrl.getRecipesByUser)
+recipe.post('/image',recipeCtrl.uploadImageRecipe)
 
 module.exports=recipe

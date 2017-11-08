@@ -1,7 +1,7 @@
 {
   "name": "cooknet",
   "version": "1.0.0",
-  "description": "",
+  "description": "node 6.11.0\\\r mongodb 3.4.7\r ## Instalaciones previas\r ```\r npm install -g gulp\r ```\r ---\r ## Instalación\r ```\r cd cooknet\r npm install\r bower install\r gulp copy\r cd server\r node app.js\r ```",
   "main": "cooknet/server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,12 +14,14 @@
   "dependencies": {
     "body-parser": "^1.18.0",
     "bower": "^1.8.2",
-    "express": "^4.15.4",
+    "express": "^4.16.2",
     "gulp": "^3.9.1",
     "jwt-simple": "^0.5.1",
     "latest-version": "^3.1.0",
     "moment": "^2.18.1",
     "mongoose": "4.6.0",
+    "multer": "^1.3.0",
+    "nodemailer": "^4.3.1",
     "nodemon": "^1.12.1",
     "sha256": "^0.2.0"
   },

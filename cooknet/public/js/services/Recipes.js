@@ -37,6 +37,11 @@ app.service('RecipesService',["$localStorage","$http",function($localStorage,$ht
         $http.defaults.headers.common['Authorization']="Bearer "+$localStorage.token;
         $http.post('./api/comment/'+id,data).then(success).catch(error);
     }
+    this.uploadImage=function(data,success,error){
+        $http.defaults.headers.common['Authorization']="Bearer "+$localStorage.token;
+        $http.post('./api/recipe/image',data).then(success).catch(error);
+        
+    }
 
     //falta definir header de authorization
 
