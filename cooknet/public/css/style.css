@@ -121,11 +121,6 @@ html *{
     background: #F4FA58;
 }
 
-body {
-	background-image: url(https://cdn.pixabay.com/photo/2016/12/18/09/10/trees-1915251_960_720.jpg);
-	background-color:#cccccc;
-}
-
 menu, ol, ul, li {
     padding: 0;
     margin: 0;
@@ -133,8 +128,9 @@ menu, ol, ul, li {
 }
 
 .content-box {
-	background-color: #e2e2e2;
 	border: 1px solid #bdbdbd;
 	border-color: #7f7f7f;
  	border-style: dashed;
+ 	padding: 20px;
+ 	margin: 0 0 25px;
 }
