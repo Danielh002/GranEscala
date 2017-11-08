@@ -11,12 +11,12 @@ function searchRecipe(req,res){
 	Recipe.find({title:new RegExp(req.params.search,'i')})
     .then(recipesByTittle=>{
     	console.log(recipesByTittle);
-        content.byTittle.push(recipesByTittle)
+        content.byTittle = recipesByTittle;
     })
 	Recipe.find({categories : req.params.search})
     .then(recipesByCategory=>{
     	console.log(recipesByCategory);
-    	content.byCategory.push(recipesByCategory)
+    	content.byCategory = recipesByCategory;
         res.send(content);
     })
     .catch(err=>{
