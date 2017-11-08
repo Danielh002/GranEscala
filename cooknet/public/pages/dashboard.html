@@ -26,9 +26,12 @@
 			</div>
 			<div class="col-md-3">
 				<h3 id="color-posts">Noticias recientes</h3>
-				<div class="lsit-group-item row" ng-repeat="recipe in trendings">
-					<a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a>
-					<br>{{recipe.description}}
+				<div class="content-box">
+					<ul ng-repeat="recipe in trendings">
+						<li>
+							<a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
