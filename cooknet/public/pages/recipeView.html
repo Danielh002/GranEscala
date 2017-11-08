@@ -1,16 +1,18 @@
-<h2>{{title}}</h2>
-<h4>Autor: {{user}}</h4>
-<div>
-    <h4>Descripción:</h4>
-    <p>{{description}}</p>
-</div>
-<div style=" white-space: pre-line;">
-    <h4>Ingredientes:</h4>
-    {{ingredients}}
-</div>
-<div>
-    <h4>Preparación:</h4>
-    <p>{{preparation}}</p>
+<h3 id="color-posts">{{title}}</h3>
+<div class="content-box">
+	<h4>Autor: {{user}}</h4>
+	<div>
+	    <h4>Descripción:</h4>
+	    <p>{{description}}</p>
+	</div>
+	<div style=" white-space: pre-line;">
+	    <h4>Ingredientes:</h4>
+	    {{ingredients}}
+	</div>
+	<div>
+	    <h4>Preparación:</h4>
+	    <p>{{preparation}}</p>
+	</div>
 </div>
 <div>
     <button type="button" class="btn btn-info" ng-if="!like" ng-click="setLike()">Me gusta</button>

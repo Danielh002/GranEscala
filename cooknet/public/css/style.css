@@ -53,3 +53,88 @@ p.capitalize {
 html *{
 	font-family: 'Montserrat', sans-serif !important;
 }
+
+#color-posts {
+	color: #fff;
+}
+
+.fondo {
+	background-image: url("images/notepad.png");
+}
+
+#notes li {
+    position: relative;
+    width: 300px;
+    min-height: 100px;
+    margin: 25px auto;
+    padding: 60px 15px 15px 15px;
+    background: #F4FA58
+    -webkit-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+    box-shadow: 0 1px 2px #000;
+    -webkit-transform: rotate(-.5deg);
+    -moz-transform: rotate(-.5deg);
+    -o-transform: rotate(-.5deg);
+}
+
+#notes li:nth-child(even) {
+    -webkit-transform: rotate(.5deg);
+    -moz-transform: rotate(.5deg);
+    -o-transform: rotate(.5deg);
+}
+
+#notes li p {
+    text-align: center;
+    font-size: 110%;
+    color: #000;
+    text-shadow: white 1px 1px 0px;
+    /*overflow:hidden;*/
+}
+
+#notes li::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 115px;
+    top: -15px;
+    width: 75px;
+    height: 25px;
+    z-index: 2;
+    background-color: rgba(243,245,228,0.5);
+    border: 2px solid rgba(255,255,255,0.5);
+    -webkit-box-shadow: 0 0 5px #888;
+    -moz-box-shadow: 0 0 5px #888;
+    box-shadow: 2px 2px 2px #000;
+    -webkit-transform: rotate(-6deg);
+    -moz-transform: rotate(-6deg);
+    -o-transform: rotate(-6deg);
+}
+
+#notes li:nth-child(even)::before {
+    -webkit-transform: rotate(6deg);
+    -moz-transform: rotate(6deg);
+    -o-transform: rotate(6deg);
+}
+
+#notes li.kiln
+{
+    background: #F4FA58;
+}
+
+body {
+	background-image: url(https://cdn.pixabay.com/photo/2016/12/18/09/10/trees-1915251_960_720.jpg);
+	background-color:#cccccc;
+}
+
+menu, ol, ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.content-box {
+	background-color: #e2e2e2;
+	border: 1px solid #bdbdbd;
+	border-color: #7f7f7f;
+ 	border-style: dashed;
+}

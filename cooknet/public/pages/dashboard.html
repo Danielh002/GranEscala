@@ -5,23 +5,23 @@
 				<img border="" src="./images/default_profile_picture.png" width="250" height="250">
 				<hr>
 				<p class="capitalize"><b>{{user}}</b></p>
-	      <div class="list-group">
-	        <a href="#!dashboard" class="list-group-item active">Dashboard</a>
-	        <a href="#!dashboard/misRecetas" class="list-group-item">Mis Recetas</a>
-	        <a href="#!dashboard/usuarios" class="list-group-item">Usuarios</a>
-	        <!--a href="#" class="list-group-item">Porta ac consectetur ac</a>
-	        <a href="#" class="list-group-item">Vestibulum at eros</a-->
-	      </div>
+	      		<div class="list-group">
+	        		<a href="#!dashboard" class="list-group-item info">Dashboard</a>
+	        		<a href="#!dashboard/misRecetas" class="list-group-item">Mis Recetas</a>
+	        		<a href="#!dashboard/usuarios" class="list-group-item">Usuarios</a>
+	      		</div>
 			</div>
 			<div class="col-md-6">
-				<h1>Publicaciones</h1>
-				<div class="list-group-item row" ng-repeat="recipe in recipesFollowing">
-					<a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a>
-					<br>{{recipe.description}}
-				</div>
+				<h3 id="color-posts">Publicaciones</h3>
+				<ul id="notes" ng-repeat="recipe in recipesFollowing">
+					<li class="kiln">
+						<a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a>
+						<p>{{recipe.description}}</p>
+					</li>
+				</ul>
 			</div>
 			<div class="col-md-3">
-				<h1>Noticias recientes</h1>
+				<h3 id="color-posts">Noticias recientes</h3>
 				<div class="lsit-group-item row" ng-repeat="recipe in trendings">
 					<a href="#!dashboard/receta/{{recipe._id}}">{{recipe.title}}</a>
 					<br>{{recipe.description}}
