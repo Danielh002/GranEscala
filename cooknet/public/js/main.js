@@ -57,6 +57,11 @@ app.config(function($routeProvider) {
 			templateUrl:'pages/dashboardAdmin.html',
 			controller:'DashboardAdminController'
 		})
+		.when('/dashboard/invitar',{
+			templateUrl:'pages/invitar.html',
+			controller:'InviteController'
+
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
