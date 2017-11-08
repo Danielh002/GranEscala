@@ -18,8 +18,8 @@ function createRecipe(req,res){
         })
     
         recipe.save()
-        .then(function(){
-            res.status(200).send({message:"recipe was created"})
+        .then(function(response){
+            res.status(200).send({message:"recipe was created",id:response._id})
         })
         .catch(function (err){
             return res.status(500).send({message:"error to create recipe"})
@@ -118,7 +118,10 @@ var storage = multer.diskStorage({ //multers disk storage settings
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
-        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
+        console.log("estoy aqui")
+        var nameFile=file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]
+        cb(null, nameFile)
+        req.nameFile=nameFile
     }
 });
 var upload = multer({ //multer settings
@@ -129,12 +132,36 @@ var upload = multer({ //multer settings
 function uploadImageRecipe(req,res){
     console.log("entro")
     upload(req,res,function(err){
+        console.log("jfcbd")
         if(err){
             console.log(err)
-             res.json({error_code:1,err_desc:err});
-             return;
+            res.json({error_code:1,err_desc:err});
+            return;
         }
-         res.json({error_code:0,err_desc:null});
+        Recipe.findById(req.body.id)
+        .then(function(recipe){
+            if(recipe){
+                console.log("-->    ")
+                console.log(recipe)
+                recipe.imageSrc="./uploads/"+req.nameFile;
+                console.log(recipe)
+                    Recipe.findByIdAndUpdate(req.body.id,recipe)
+                    .then(function(){
+                        // res.send({message:"recipe was updated"})
+                    })
+                    .catch(function(err){
+                        // res.status(500).send({message:"error to update recipe"})
+                    })
+            }
+            else{
+                // res.status(404).send({message:"recipe dont exist"})
+            }
+        })
+        .catch(function(err){
+            // res.status(500).send({message:"error to find recipe"})
+        })
+        console.log(req.nameFile)
+        res.json({error_code:0,err_desc:null});
     })
 }
 
