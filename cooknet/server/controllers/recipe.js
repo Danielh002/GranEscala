@@ -98,7 +98,7 @@ function updateRecipe(req,res){
 }
 
 function getRecipesByUser(req,res){
-    Recipe.find({user:req.params.user}).select('title description')
+    Recipe.find({user:req.params.user}).select('title description likes')
     .then((recipes)=>{
         if(recipes){
             res.send(recipes)
